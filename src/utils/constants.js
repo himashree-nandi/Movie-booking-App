@@ -1,5 +1,5 @@
 export const USER_TYPES="userTypes"
-export const TOKEN="accessToken"
+export const TOKEN="token"
 export const userTypes={
     ADMIN:"ADMIN",
     CUSTOMER:"CUSTOMER",

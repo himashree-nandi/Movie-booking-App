@@ -2,14 +2,15 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import LandingPage from "./pages/LandingPage";
+import Admin from "./pages/Admin";
 function App() {
   return (
     <div>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />}></Route>
-          <Route path="/register"element={<LandingPage/>}></Route>
-          <Route path="/abc"></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/"element={<LandingPage/>}></Route>
+          <Route path="/admin" element={<Admin/>}></Route>
         </Routes>
       </Router>
     </div>

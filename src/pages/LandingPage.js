@@ -1,16 +1,12 @@
-import { Button } from 'bootstrap'
-import React from 'react'
+import React from "react";
+import Navbar from "../components/Navbar";
+import Carousel from "../components/Carousel";
 
 export default function LandingPage() {
-  return ( 
+  return (
     <div>
-        <div className='row'>
-            <div className='col'>MBA</div>
-            <div className='col'><input type='text' className='form-control' placeholder='Search Movie'/></div>
-            <div className='col'>
-                <Button className='btn btn-danger'>Login</Button>
-            </div>
-        </div>
+      <Navbar />
+      <Carousel />
     </div>
-  ) 
+  );
 }

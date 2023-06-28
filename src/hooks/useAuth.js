@@ -9,6 +9,8 @@ export const useAuth = () => {
   const redirect = () => {
     const usertype = localStorage.getItem(USER_TYPES);
     const token = localStorage.getItem(TOKEN);
+    console.log(usertype)
+    console.log(token)
     if (!usertype || !token) {
       return;
     }
