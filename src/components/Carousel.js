@@ -7,7 +7,7 @@ import Fourth from "../assets/4.avif";
 export default function Carousel() {
   return (
     <div>
-      <CCarousel className="bg-light">
+      <CCarousel controls indicators> 
         <CCarouselItem>
           <CImage className="d-block w-100" src={First} alt="slide 1" />
         </CCarouselItem>

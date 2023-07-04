@@ -14,12 +14,12 @@ export default function Navbar() {
   };
   return (
     <div
-      className="  container-fluid sticky-top bg-black "
+      className="  container-fluid sticky-top bg-dark "
       style={{ overflow: "hidden" }}
     >
-      <div className="row text-danger p-3 ">
+      <div className="row text-white p-3 ">
         <div className="col-4" style={{ fontWeight: "600", fontSize: "25px" }}>
-          MBA
+          <h2>bookmyMovie</h2>
         </div>
         <div className="col-6">
           <input
