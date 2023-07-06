@@ -14,7 +14,7 @@ export default function MovieCard({ movie }) {
       />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
-        <Card.Text>{description}</Card.Text>
+        {/* <Card.Text>{description}</Card.Text> */}
       </Card.Body>
       <ListGroup className="list-group-flush">
         <ListGroup.Item className="d-flex justify-content-between">

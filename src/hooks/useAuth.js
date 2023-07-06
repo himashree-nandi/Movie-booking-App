@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { signIn } from "../api/auth";
+import { signIn, signUp } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import { TOKEN, USER_TYPES, userTypes } from "../utils/constants";
 export const useAuth = () => {
@@ -9,8 +9,8 @@ export const useAuth = () => {
   const redirect = () => {
     const usertype = localStorage.getItem(USER_TYPES);
     const token = localStorage.getItem(TOKEN);
-    console.log(usertype)
-    console.log(token)
+    console.log(usertype);
+    console.log(token);
     if (!usertype || !token) {
       return;
     }
@@ -28,7 +28,7 @@ export const useAuth = () => {
   }, []);
 
   const onlogin = (values, { setSubmitting }) => {
-    const userDetails = {userId: values.userId,password: values.password};
+    const userDetails = { userId: values.userId, password: values.password };
     // console.log(userDetails);
     const loginResponse = signIn(userDetails);
     // console.log(loginResponse)
@@ -37,4 +37,50 @@ export const useAuth = () => {
   };
 
   return { initialStatus, onlogin };
+};
+
+export const useSignUp = () => {
+  useEffect(() => {
+    redirect();
+  }, []);
+  const initialStatus = {
+    userId: "",
+    password: "",
+    userTypes: "",
+    email: "",
+    name: "",
+  };
+
+  const navigate = useNavigate();
+
+  const redirect = () => {
+    const usertype = localStorage.getItem(USER_TYPES);
+    const token = localStorage.getItem(TOKEN);
+    console.log(usertype);
+    console.log(token);
+    if (!usertype || !token) {
+      return;
+    }
+    if (usertype === userTypes.ADMIN) {
+      navigate("/admin");
+    } else if (usertype === userTypes.CLINT) {
+      navigate("/clint");
+    } else {
+      navigate("/login");
+    }
+  };
+  const onSignUp = async (values) => {
+    const userDetails = {
+      name: values.name,
+      email: values.email,
+      userId: values.userId,
+      password: values.password,
+      userTypes: values.userTypes,
+    };
+    const signUpResponse =await signUp(userDetails);
+    if (signUpResponse.status === 201) {
+      navigate("/login");
+    }
+  };
+  return { initialStatus, onSignUp };
 };

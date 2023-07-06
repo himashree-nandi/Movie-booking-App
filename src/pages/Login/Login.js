@@ -1,26 +1,28 @@
 import { Field, Formik, ErrorMessage, Form } from "formik";
-import { formValidator } from "../validators/formValidator";
-import { useAuth } from "../hooks/useAuth";
+import { formValidator } from "../../validators/formValidator";
+import { useAuth } from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
+import "./login.css";
 export default function Login() {
   const { onlogin, initialStatus } = useAuth();
   return (
-    <div className="App align-items-center justify-content-center d-flex flex-column vh-100 text-danger bg-dark">
+    <div className="App align-items-center justify-content-center d-flex flex-column vh-100 text-danger img"
+    >
       <h1>Movie Booking Application</h1>
       <div
-        className=" card p-3 m-5 shadow"
+        className=" border p-3 m-5 shadow"
         style={{
           width: 30 + "rem",
-          backgroundColor: "rgb(223, 215, 215)",
           borderRadius: "13px",
-        }} 
-      > 
+        }}
+      >
         <Formik
           initialValues={initialStatus}
           validate={formValidator}
           onSubmit={onlogin}
         >
           {({ isSubmitting }) => (
-            <Form className=" align-items-center text-align-center">
+            <Form className=" align-items-center text-align-center blur">
               <h1>Log In</h1>
               <Field
                 type="text"
@@ -43,6 +45,13 @@ export default function Login() {
               >
                 Log In
               </button>
+              <hr />
+              <Link to="/signup"
+              style={{ textDecoration:"none" }}
+              className="text-success"
+              >
+               <p> Don't ahve an account ? Sign Up</p>
+              </Link>
             </Form>
           )}
         </Formik>
