@@ -1,8 +1,11 @@
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import { Link } from "react-router-dom";
 export default function MovieCard({ movie }) {
-  const { name, description, language, posterUrl, casts, director } = movie;
+  const { name, description, language, posterUrl, casts, director,_id } = movie;
   return (
+    <>
+    <Link key={_id} to={`movie/${_id}/details`}>
     <Card
       className="mx-3 my-3"
       style={{ width: "18rem",borderRadius:"15px",cursor:"pointer" }}
@@ -49,5 +52,7 @@ export default function MovieCard({ movie }) {
         </div>
       </Card.Body>
     </Card>
+    </Link>
+    </>
   );
 }

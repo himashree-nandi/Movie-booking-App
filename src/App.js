@@ -3,15 +3,21 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Admin from "./pages/Admin";
 import Auth from "./pages/Login/Auth";
+import MovieDetails from "./pages/MovieDetails/MovieDetails";
 function App() {
   return (
     <div>
       <Router>
         <Routes>
-          <Route path="/login" element={<Auth />}></Route>
-          <Route path="/signup" element={<Auth />}></Route>
-          <Route path="/"element={<LandingPage/>}></Route>
-          <Route path="/admin" element={<Admin/>}></Route>
+          <Route exact path="/login" element={<Auth />} />
+          <Route exact path="/signup" element={<Auth />} />
+          <Route exact path="/" element={<LandingPage />} />
+          <Route exact path="/admin" element={<Admin />} />
+          <Route
+            exact
+            path="/movie/:movieId/details"
+            element={<MovieDetails />}
+          />
         </Routes>
       </Router>
     </div>
