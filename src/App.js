@@ -1,9 +1,9 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import Admin from "./pages/Admin";
 import Auth from "./pages/Login/Auth";
 import MovieDetails from "./pages/MovieDetails/MovieDetails";
+import Admin from "./pages/Admin/Admin";
 function App() {
   return (
     <div>

@@ -9,6 +9,8 @@ export const useAuth = () => {
   const redirect = () => {
     const usertype = localStorage.getItem(USER_TYPES);
     const token = localStorage.getItem(TOKEN);
+    // const usertype = localStorage.getItem("userTypes");
+    // const token = localStorage.getItem("token");
     console.log(usertype);
     console.log(token);
     if (!usertype || !token) {
@@ -27,10 +29,10 @@ export const useAuth = () => {
     redirect();
   }, []);
 
-  const onlogin = (values, { setSubmitting }) => {
+  const onlogin =async (values, { setSubmitting }) => {
     const userDetails = { userId: values.userId, password: values.password };
     // console.log(userDetails);
-    const loginResponse = signIn(userDetails);
+    const loginResponse =await signIn(userDetails);
     // console.log(loginResponse)
     setSubmitting(false);
     redirect();

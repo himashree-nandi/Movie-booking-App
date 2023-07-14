@@ -45,10 +45,8 @@ export default function MovieCard({ movie }) {
           className="d-flex align-items-center justify-content-between"
         >
           <i className="bi bi-star-fill text-danger"></i>
-          <span>60k</span>
-          <Card.Link href="#" className="text-white" style={{textDecoration:"none"}}>
-            See Trailer<i className="bi   bi-arrow-right-circle"></i>
-          </Card.Link>
+          <div>60k</div>
+            See Trailer<i className="bi   bi-arrow-right-short"></i>
         </div>
       </Card.Body>
     </Card>

@@ -1,3 +1,8 @@
 .app{
     overflow: hidden;
 }
+.col-lg-4 {
+    vertical-align: middle;
+    width: inherit;
+    height: auto;
+}
