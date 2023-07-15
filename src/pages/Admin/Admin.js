@@ -1,11 +1,14 @@
 import "./admin.css";
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import { getAllMovies } from "../../api/movieApi";
 import { theatreApi } from "../../api/theatreApi";
 import { bookingsApi } from "../../api/bookingsApi";
 import { userApi } from "../../api/userApi";
-import CWedget from "../../components/CWedget/CWedget";
+import CWidget from "../../components/CWidget/CWidget";
+import { key } from "../../utils/constants";
+
+export const WedgetContext = createContext();
 export default function Admin() {
   const [theatres, setTheatres] = useState([]);
   const [bookings, setBookings] = useState([]);
@@ -17,6 +20,7 @@ export default function Admin() {
     bookings: 0,
     users: 0,
   });
+
   const allPromise = async () => {
     await Promise.all([
       getMovies(),
@@ -59,6 +63,32 @@ export default function Admin() {
     count.users = users.length;
     setCount({ ...count });
   };
+  // state for open tables
+  const [showMoviesTable, setShowMoviesTable] = useState(false);
+  const [showTheatresTable, setShowTheatresTable] = useState(false);
+  const [showBookingsTable, setShowBookingsTable] = useState(false);
+  const [showUsersTable, setShowUsersTable] = useState(false);
+  const wedgetClick = (id) => {
+    setShowMoviesTable(false);
+    setShowTheatresTable(false);
+    setShowBookingsTable(false);
+    setShowUsersTable(false);
+    if (id === "MOVIE") {
+      setShowMoviesTable(true);
+    } else if (id === "THEATRE") {
+      setShowTheatresTable(true);
+    } else if (id === "BOOKING") {
+      setShowBookingsTable(true);
+    } else if (id === "USER") {
+      setShowUsersTable(true);
+    }
+   
+  };
+  const show = {};
+    show[key.THEATRE] = showTheatresTable;
+    show[key.MOVIE] = showMoviesTable;
+    show[key.BOOKING] = showBookingsTable;
+    show[key.USER] = showUsersTable;
   return (
     <div>
       <Navbar />
@@ -72,7 +102,15 @@ export default function Admin() {
         </h5>
         <br />
       </div>
-      <CWedget count={count}/>
+      <WedgetContext.Provider value={{ wedgetClick,show }}>
+        <CWidget count={count} />
+      </WedgetContext.Provider>
+      <br />
+      <hr />
+      {showTheatresTable && "theatre"}
+      {showMoviesTable && "movies"}
+      {showBookingsTable && "bookings"}
+      {showUsersTable && "user"}
     </div>
   );
 }
