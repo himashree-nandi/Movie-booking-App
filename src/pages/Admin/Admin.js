@@ -7,6 +7,10 @@ import { bookingsApi } from "../../api/bookingsApi";
 import { userApi } from "../../api/userApi";
 import CWidget from "../../components/CWidget/CWidget";
 import { key } from "../../utils/constants";
+import TheatresTable from "../../components/Tables/TheatresTable";
+import MoviesTable from "../../components/Tables/MoviesTable";
+import BookingsTable from "../../components/Tables/BookingsTable";
+import UsersTable from "../../components/Tables/UsersTable";
 
 export const WedgetContext = createContext();
 export default function Admin() {
@@ -82,13 +86,14 @@ export default function Admin() {
     } else if (id === "USER") {
       setShowUsersTable(true);
     }
-   
   };
   const show = {};
-    show[key.THEATRE] = showTheatresTable;
-    show[key.MOVIE] = showMoviesTable;
-    show[key.BOOKING] = showBookingsTable;
-    show[key.USER] = showUsersTable;
+  show[key.THEATRE] = showTheatresTable;
+  show[key.MOVIE] = showMoviesTable;
+  show[key.BOOKING] = showBookingsTable;
+  show[key.USER] = showUsersTable;
+
+  
   return (
     <div>
       <Navbar />
@@ -102,15 +107,32 @@ export default function Admin() {
         </h5>
         <br />
       </div>
-      <WedgetContext.Provider value={{ wedgetClick,show }}>
+      <WedgetContext.Provider value={{ wedgetClick, show }}>
         <CWidget count={count} />
       </WedgetContext.Provider>
       <br />
       <hr />
-      {showTheatresTable && "theatre"}
-      {showMoviesTable && "movies"}
-      {showBookingsTable && "bookings"}
-      {showUsersTable && "user"}
+
+      {showTheatresTable && (
+        <div>
+          <TheatresTable theatres={theatres}/>
+        </div>
+      )}
+      {showMoviesTable && (
+        <div>
+          <MoviesTable movies={movies}/>
+        </div>
+      )}
+      {showBookingsTable && (
+        <div>
+          <BookingsTable bookings={bookings}/>
+        </div>
+      )}
+      {showUsersTable && (
+        <div>
+          <UsersTable users={users}/>
+        </div>
+      )}
     </div>
   );
 }
