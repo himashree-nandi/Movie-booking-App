@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import ReactPlayer from "react-player";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CSpinner } from "@coreui/react";
 import { getMovieById } from "../../api/movieDetailsApi";
 import "./movieDetails.css";
@@ -9,7 +9,8 @@ import { Button } from "react-bootstrap";
 export default function MovieDetails() {
   const [movieDetails, setMoviesData] = useState(null);
   const { movieId } = useParams();
-  console.log(movieId);
+  console.log(movieId)
+
   const fetchMoviesDetails = async () => {
     const movies = await getMovieById(movieId);
     setMoviesData(movies);
@@ -59,8 +60,8 @@ export default function MovieDetails() {
                 <hr />
                 <h5>Cast</h5>
 
-                {movieDetails.casts.map((name) => {
-                  return <li>{name}</li>;
+                {movieDetails.casts.map((name,index) => {
+                  return <li key={index}>{name}</li>;
                 })}
 
                 <h4 className="text-justify mt-4">
@@ -71,9 +72,13 @@ export default function MovieDetails() {
                   {" "}
                   Released On {movieDetails.releaseDate}
                 </h4>
+
+                <Link to={`/buyTickets/${movieId}`}>
                 <Button className="btn btn-danger text-white m-2">
                   Book tickets
-                </Button>
+                  </Button>
+                </Link>
+
               </div>
             </div>
           </>

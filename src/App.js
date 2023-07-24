@@ -4,6 +4,7 @@ import LandingPage from "./pages/LandingPage";
 import Auth from "./pages/Login/Auth";
 import MovieDetails from "./pages/MovieDetails/MovieDetails";
 import Admin from "./pages/Admin/Admin";
+import TheatrePage from "./pages/TheatrePage/TheatrePage";
 function App() {
   return (
     <div>
@@ -13,11 +14,8 @@ function App() {
           <Route exact path="/signup" element={<Auth />} />
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/admin" element={<Admin />} />
-          <Route
-            exact
-            path="/movie/:movieId/details"
-            element={<MovieDetails />}
-          />
+          <Route exact path="/movie/:movieId/details"element={<MovieDetails />}/>
+          <Route exact path="/buyTickets/:movieId" element={<TheatrePage/>} />
         </Routes>
       </Router>
     </div>
