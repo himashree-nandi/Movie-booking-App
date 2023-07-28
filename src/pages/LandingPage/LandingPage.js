@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import Carousel from "../components/Carousel";
-import { getAllMovies } from "../api/movieApi";
+import Navbar from "../../components/Navbar/Navbar";
+import Carousel from "../../components/Carousel";
+import { getAllMovies } from "../../api/movieApi";
 import { CSpinner } from "@coreui/react";
-import MoviesList from "../components/MoviesList/MoviesList";
+import MoviesList from "../../components/MoviesList/MoviesList";
 
 function LandingPage() {
   const [moviesData, setMoviesData] = useState(null);

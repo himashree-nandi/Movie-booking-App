@@ -3,7 +3,7 @@ export const TOKEN = "token";
 export const userTypes = {
   ADMIN: "ADMIN",
   CUSTOMER: "CUSTOMER",
-  CLINT: "CLINT",
+  CLIENT: "CLIENT",
 };
 export const key = {
   MOVIE: "MOVIE",

@@ -20,8 +20,8 @@ export const useAuth = () => {
       navigate("/admin");
     } else if (usertype === userTypes.CUSTOMER) {
       navigate("/customer");
-    } else if (usertype === userTypes.CLINT) {
-      navigate("/clint");
+    } else if (usertype === userTypes.CLIENT) {
+      navigate("/client");
     }
   };
 
@@ -29,10 +29,10 @@ export const useAuth = () => {
     redirect();
   }, []);
 
-  const onlogin =async (values, { setSubmitting }) => {
+  const onlogin = async (values, { setSubmitting }) => {
     const userDetails = { userId: values.userId, password: values.password };
     // console.log(userDetails);
-    const loginResponse =await signIn(userDetails);
+    const loginResponse = await signIn(userDetails);
     // console.log(loginResponse)
     setSubmitting(false);
     redirect();
@@ -65,8 +65,8 @@ export const useSignUp = () => {
     }
     if (usertype === userTypes.ADMIN) {
       navigate("/admin");
-    } else if (usertype === userTypes.CLINT) {
-      navigate("/clint");
+    } else if (usertype === userTypes.CLIENT) {
+      navigate("/client");
     } else {
       navigate("/login");
     }
@@ -79,7 +79,7 @@ export const useSignUp = () => {
       password: values.password,
       userTypes: values.userTypes,
     };
-    const signUpResponse =await signUp(userDetails);
+    const signUpResponse = await signUp(userDetails);
     if (signUpResponse.status === 201) {
       navigate("/login");
     }

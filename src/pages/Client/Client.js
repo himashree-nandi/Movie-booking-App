@@ -1,37 +1,23 @@
-import "./admin.css";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext } from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import { useState, useEffect } from "react";
 import { getAllMovies } from "../../api/movieApi";
 import { theatreApi } from "../../api/theatreApi";
-import { bookingsApi } from "../../api/bookingsApi";
-import { userApi } from "../../api/userApi";
-import CWidget from "../../components/CWidget/CWidget";
 import { key } from "../../utils/constants";
 import TheatresTable from "../../components/Tables/TheatresTable";
 import MoviesTable from "../../components/Tables/MoviesTable";
-import BookingsTable from "../../components/Tables/BookingsTable";
-import UsersTable from "../../components/Tables/UsersTable";
-
+import CwedgetCard from "../../components/CwidgetCard/CwidgetCard";
+import './client.css'
 export const WedgetContext = createContext();
-export default function Admin() {
+export default function Client() {
   const [theatres, setTheatres] = useState([]);
-  const [bookings, setBookings] = useState([]);
-  const [users, setUsers] = useState([]);
   const [movies, setMovies] = useState([]);
   const [count, setCount] = useState({
     movies: 0,
     theatres: 0,
-    bookings: 0,
-    users: 0,
   });
-
   const allPromise = async () => {
-    await Promise.all([
-      getMovies(),
-      getAllTheatres(),
-      getAllBookings(),
-      getAllUsers(),
-    ]);
+    await Promise.all([getMovies(), getAllTheatres()]);
   };
   useEffect(() => {
     allPromise();
@@ -51,49 +37,23 @@ export default function Admin() {
     count.theatres = theatres.length;
     setCount({ ...count });
   };
-  // bookings api
-  const getAllBookings = async () => {
-    const bookings = await bookingsApi();
-    setBookings(bookings);
-    // console.log(response);
-    count.bookings = bookings.length;
-    setCount({ ...count });
-  };
-  //user api
-  const getAllUsers = async () => {
-    const users = await userApi();
-    setUsers(users);
-    // console.log(response);
-    count.users = users.length;
-    setCount({ ...count });
-  };
   // state for open tables
   const [showMoviesTable, setShowMoviesTable] = useState(false);
   const [showTheatresTable, setShowTheatresTable] = useState(false);
-  const [showBookingsTable, setShowBookingsTable] = useState(false);
-  const [showUsersTable, setShowUsersTable] = useState(false);
   const wedgetClick = (id) => {
     setShowMoviesTable(false);
     setShowTheatresTable(false);
-    setShowBookingsTable(false);
-    setShowUsersTable(false);
+
     if (id === "MOVIE") {
       setShowMoviesTable(true);
     } else if (id === "THEATRE") {
       setShowTheatresTable(true);
-    } else if (id === "BOOKING") {
-      setShowBookingsTable(true);
-    } else if (id === "USER") {
-      setShowUsersTable(true);
     }
   };
   const show = {};
   show[key.THEATRE] = showTheatresTable;
   show[key.MOVIE] = showMoviesTable;
-  show[key.BOOKING] = showBookingsTable;
-  show[key.USER] = showUsersTable;
 
-  
   return (
     <div>
       <Navbar />
@@ -103,34 +63,47 @@ export default function Admin() {
         </h1>
         <h5 className="text-muted">
           Take a quick look at your {localStorage.getItem("userTypes")} stats
-          below{" "}
+          below
         </h5>
         <br />
+      
+      <div className=" m-5 d-flex">
+        <div className="m-2">
+          <CwedgetCard
+            title="Theatres"
+            wedgetClick={wedgetClick}
+            show={show}
+            id={key.THEATRE}
+            value={count.theatres}
+            progress={{ value: count.theatres }}
+            icon="bi-building"
+          />
+        </div>
+        <div className="m-2">
+          <CwedgetCard
+            title="Movies"
+            wedgetClick={wedgetClick}
+            show={show}
+            id={key.MOVIE}
+            value={count.movies}
+            icon="bi-film"
+            progress={{ value: count.movies }}
+          />
+        </div>
       </div>
-        <CWidget count={count} wedgetClick={wedgetClick} show={show}/>
       <br />
       <hr />
-
       {showTheatresTable && (
         <div>
-          <TheatresTable theatres={theatres}/>
+          <TheatresTable theatres={theatres} />
         </div>
       )}
       {showMoviesTable && (
         <div>
-          <MoviesTable movies={movies}/>
+          <MoviesTable movies={movies} />
         </div>
       )}
-      {showBookingsTable && (
-        <div>
-          <BookingsTable bookings={bookings}/>
-        </div>
-      )}
-      {showUsersTable && (
-        <div>
-          <UsersTable users={users}/>
-        </div>
-      )}
+    </div>
     </div>
   );
 }

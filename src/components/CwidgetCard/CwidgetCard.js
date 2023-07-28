@@ -1,17 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { CWidgetStatsC } from "@coreui/react";
 import './widget.css'
-import { WedgetContext } from "../../pages/Admin/Admin";
 export default function CwedgetCard(props) {
-  const { value, title, icon ,progress,id} = props;
-  const {wedgetClick,show}=useContext(WedgetContext)
+  const { value, title, icon ,progress,id,wedgetClick,show} = props;
   return (
     <div>
       <CWidgetStatsC
       onClick={()=>wedgetClick(id)}
         className="mb-3 box"
         icon={<i className={`bi ${icon}`}></i>}
-        color={show[id]?"info":"black"}
+        color={show[id]?"danger":"black"}
         inverse={true}
         progress={progress}
         text="Theatres"
