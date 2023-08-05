@@ -12,3 +12,18 @@ export const bookingsApi = async (user) => {
     console.log(err);
   }
 };
+
+export const createBooking = async (bookingRequest) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/mba/api/v1/bookings`,
+      bookingRequest,
+      {
+        headers: { "x-access-token": localStorage.getItem(TOKEN) },
+      }
+    );
+    return response
+  } catch (err) {
+    console.log(err);
+  }
+};

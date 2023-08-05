@@ -1,0 +1,10 @@
+.moviename{
+    color: black;
+    font-size: 50px;
+}
+.link{
+    text-decoration: none;
+}
+.link :hover{
+    text-decoration:underline;
+}

@@ -8,7 +8,7 @@ export const signIn = async (user) => {
       `${BASE_URL}/mba/api/v1/auth/signin`,
       user
     );
-    const { userId, name, email, accessToken, userTypes, status } =
+    const { userId, name, email, accessToken, userTypes, status,_id } =
       response.data;
     console.log(response.data);
     if (accessToken) {
@@ -18,6 +18,7 @@ export const signIn = async (user) => {
       localStorage.setItem("userTypes", userTypes);
       localStorage.setItem("status", status);
       localStorage.setItem("token", accessToken);
+      localStorage.setItem("id", _id);
     }
     return response.data;
   } catch (err) {
