@@ -50,7 +50,7 @@ export default function Login() {
               style={{ textDecoration:"none" }}
               className="text-success"
               >
-               <p> Don't ahve an account ? Sign Up</p>
+               <p> Don't have an account ? Sign Up</p>
               </Link>
             </Form>
           )}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar2 from "../../components/Navbar2/Navbar2";
 import ReactPlayer from "react-player";
 import { Link, useParams } from "react-router-dom";
 import { CSpinner } from "@coreui/react";
@@ -21,7 +21,7 @@ export default function MovieDetails() {
   }, []);
   return (
     <>
-    <Navbar />
+    <Navbar2 />
     <div className="app text-center">
     
       <br />

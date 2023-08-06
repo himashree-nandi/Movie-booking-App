@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar2 from "../../components/Navbar2/Navbar2";
 import { useState, useEffect } from "react";
 import { getAllMovies } from "../../api/movieApi";
 import { theatreApi } from "../../api/theatreApi";
@@ -56,7 +56,7 @@ export default function Client() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
       <div className="container-fluid bg-light  text-center ">
         <h1 className="text-primary">
           Welcome {localStorage.getItem("name")} !

@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { movieTheatre } from "../../api/movieTheatre";
 import { getMovieById } from "../../api/movieDetailsApi";
 import { Spinner } from "react-bootstrap";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar2 from "../../components/Navbar2/Navbar2";
 import MovieTheatre from "../../components/MovieTheatre/MovieTheatre";
 import './theatrePage.css'
 export default function TheatrePage() {
@@ -34,7 +34,7 @@ export default function TheatrePage() {
   return (
     <div>
       <div>
-        <Navbar />
+        <Navbar2 />
         {/*  */}
       </div>
       <div className="text-center text-dark fw-bolder">

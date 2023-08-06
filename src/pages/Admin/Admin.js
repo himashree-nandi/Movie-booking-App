@@ -1,6 +1,5 @@
 import "./admin.css";
 import React, { createContext, useEffect, useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
 import { getAllMovies } from "../../api/movieApi";
 import { theatreApi } from "../../api/theatreApi";
 import { bookingsApi } from "../../api/bookingsApi";
@@ -11,6 +10,7 @@ import TheatresTable from "../../components/Tables/TheatresTable";
 import MoviesTable from "../../components/Tables/MoviesTable";
 import BookingsTable from "../../components/Tables/BookingsTable";
 import UsersTable from "../../components/Tables/UsersTable";
+import Navbar2 from "../../components/Navbar2/Navbar2";
 
 export const WedgetContext = createContext();
 export default function Admin() {
@@ -96,7 +96,7 @@ export default function Admin() {
   
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
       <div className="container-fluid bg-light  text-center ">
         <h1 className="text-primary">
           Welcome {localStorage.getItem("name")} !

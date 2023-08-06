@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar2 from "../../components/Navbar2/Navbar2";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getTheatresById } from "../../api/theatreApi";
@@ -73,7 +73,7 @@ export default function Bookings() {
   };
   return (
     <>
-      <Navbar />
+      <Navbar2 />
       <div className="text-center bg-black fullView">
         {isLoading && <CSpinner />}
         {!isLoading && (
