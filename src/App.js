@@ -7,6 +7,7 @@ import Admin from "./pages/Admin/Admin";
 import TheatrePage from "./pages/TheatrePage/TheatrePage";
 import Client from "./pages/Client/Client";
 import Bookings from "./pages/Bookings/Bookings";
+import AuthHOC from "./hoc/AuthHOC";
 function App() {
   return (
     <div>
@@ -18,7 +19,7 @@ function App() {
           <Route exact path="/admin" element={<Admin />} />
           <Route exact path="/client" element={<Client/>}/>
           <Route exact path="/movie/:movieId/details"element={<MovieDetails />}/>
-          <Route exact path="/buyTickets/:movieId" element={<TheatrePage/>} />
+          <Route exact path="/buyTickets/:movieId" element={<AuthHOC><TheatrePage/></AuthHOC>} />
           <Route exact path="/buyTickets/:movieId/:theatreId" element={<Bookings/>}/>
         </Routes>
       </Router>

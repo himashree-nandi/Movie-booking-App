@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { Link } from "react-router-dom";
 
 function Payment({
   modal,
@@ -48,6 +49,9 @@ function Payment({
                   <i class="bi bi-check2-circle text-success fw-bolder"></i>
                   <small> Booking Id : </small>
                   <h5 className="fw-bolder"> {bookingsData._id} </h5>
+                  <Link to="/">
+                    <Button variant="danger" className="text-white">Go to home page</Button>
+                  </Link>
                 </div>
               ) : (
                 <div className="d-flex flex-column justify-content-between align-items-center">

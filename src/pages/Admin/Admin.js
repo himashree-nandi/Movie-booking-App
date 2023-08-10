@@ -93,44 +93,30 @@ export default function Admin() {
   show[key.BOOKING] = showBookingsTable;
   show[key.USER] = showUsersTable;
 
-  
   return (
     <div>
       <Navbar2 />
       <div className="container-fluid bg-light  text-center ">
         <h1 className="text-primary">
-          Welcome {localStorage.getItem("name")} !
+          Welcome , {localStorage.getItem("name")} !
         </h1>
         <h5 className="text-muted">
           Take a quick look at your {localStorage.getItem("userTypes")} stats
           below{" "}
         </h5>
+        <CWidget count={count} wedgetClick={wedgetClick} show={show} />
         <br />
+        <div>
+          {showTheatresTable && (
+            <TheatresTable theatres={theatres} setTheatres={setTheatres} />
+          )}
+          {showMoviesTable && <MoviesTable movies={movies} />}
+          {showBookingsTable && (
+            <BookingsTable bookings={bookings} setBookings={setBookings} />
+          )}
+          {showUsersTable && <UsersTable users={users} setUsers={setUsers}/>}
+        </div>
       </div>
-        <CWidget count={count} wedgetClick={wedgetClick} show={show}/>
-      <br />
-      <hr />
-
-      {showTheatresTable && (
-        <div>
-          <TheatresTable theatres={theatres}/>
-        </div>
-      )}
-      {showMoviesTable && (
-        <div>
-          <MoviesTable movies={movies}/>
-        </div>
-      )}
-      {showBookingsTable && (
-        <div>
-          <BookingsTable bookings={bookings}/>
-        </div>
-      )}
-      {showUsersTable && (
-        <div>
-          <UsersTable users={users}/>
-        </div>
-      )}
     </div>
   );
 }

@@ -21,6 +21,9 @@ export default function Carousel() {
           <CImage className="d-block w-100" src={Fourth} alt="slide 4" />
         </CCarouselItem>
       </CCarousel>
+      <div className="d-flex" style={{margin:"1rem"}}>
+        <img src="https://assets-in.bmscdn.com/discovery-catalog/collections/tr:w-1440,h-120:q-80/stream-leadin-web-collection-202210241242.png" width="100%"/>
+      </div>
     </div>
   );
 }

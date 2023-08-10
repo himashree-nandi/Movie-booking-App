@@ -30,7 +30,7 @@ export default function MovieDetails() {
           <CSpinner color="primary" variant="grow" />
         ) : (
           <>
-            <div className=" row">
+            <div className=" row bg-black">
               <ReactPlayer
                 url={movieDetails.trailerUrl}
                 controls={true}
@@ -47,12 +47,12 @@ export default function MovieDetails() {
                 <h2>About the Movie</h2>
 
                 <h5>{movieDetails.description}</h5>
+                <br/>
                 <div>
-                  <span className="badge text-bg-danger p-3 rounded-pill m-2 text-white">
-                    {" "}
+                  <span className="text-black px-3 m-3" style={{border:"2px solid black",borderRadius:"10px"}}>
                     {movieDetails.language}{" "}
                   </span>
-                  <span className="badge text-bg-danger p-3 rounded-pill m-2 text-white">
+                  <span className="text-black px-3 m-3" style={{border:"2px solid black",borderRadius:"10px"}}>
                     {" "}
                     {movieDetails.releaseStatus}{" "}
                   </span>
@@ -74,7 +74,7 @@ export default function MovieDetails() {
                 </h4>
 
                 <Link to={`/buyTickets/${movieId}`}>
-                <Button className="btn btn-danger text-white m-2">
+                <Button className="btn btn-danger text-white p-3 m-3">
                   Book tickets
                   </Button>
                 </Link>

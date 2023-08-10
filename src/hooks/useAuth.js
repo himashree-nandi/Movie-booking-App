@@ -1,22 +1,29 @@
 import { useEffect } from "react";
 import { signIn, signUp } from "../api/auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { TOKEN, USER_TYPES, userTypes } from "../utils/constants";
 export const useAuth = () => {
   const initialStatus = { userId: "", password: "" };
+  const location = useLocation();
+  console.log(location);
+  const redirectURL = new URLSearchParams(location.search).get("redirectKey");
+  console.log(redirectURL);
 
   const navigate = useNavigate();
   const redirect = () => {
     const usertype = localStorage.getItem(USER_TYPES);
     const token = localStorage.getItem(TOKEN);
-    // const usertype = localStorage.getItem("userTypes");
-    // const token = localStorage.getItem("token");
     console.log(usertype);
     console.log(token);
+    // const usertype = localStorage.getItem("userTypes");
+    // const token = localStorage.getItem("token");
+    
     if (!usertype || !token) {
       return;
     }
-    if (usertype === userTypes.ADMIN) {
+    if (redirectURL) {
+      navigate(redirectURL);
+    } else if (usertype === userTypes.ADMIN) {
       navigate("/admin");
     } else if (usertype === userTypes.CUSTOMER) {
       navigate("/customer");

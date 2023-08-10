@@ -27,3 +27,21 @@ export const createBooking = async (bookingRequest) => {
     console.log(err);
   }
 };
+export const updateBookingsById = async (bookingId, updatedData) => {
+  try {
+    const res = await axios.put(
+      `${BASE_URL}/mba/api/v1/bookings/${bookingId}`,
+      updatedData,
+      {
+        headers: {
+          "x-access-token": localStorage.getItem(TOKEN),
+        },
+      }
+    );
+
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+

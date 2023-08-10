@@ -9,7 +9,7 @@ const ImageCell = ({ rowData, dataKey, ...rest }) => (
 export default function MoviesTable(props) {
     const {movies}=props
   return (
-    <div><h3 className="m-3"> Movies </h3>
+    <div><h1 className="m-3"> Movies </h1>
     <Table
       bordered={true}
       autoHeight={true}
