@@ -6,13 +6,13 @@ import "./login.css";
 export default function Login() {
   const { onlogin, initialStatus } = useAuth();
   return (
-    <div className="App align-items-center justify-content-center d-flex flex-column vh-100 text-danger img"
+    <div className="app align-items-center justify-content-center d-flex flex-column vh-100 text-danger img"
     >
       <h1>Movie Booking Application</h1>
       <div
         className=" border p-3 m-5 shadow"
         style={{
-          width: 30 + "rem",
+          width: 30+ "rem",
           borderRadius: "13px",
         }}
       >
@@ -28,19 +28,19 @@ export default function Login() {
                 type="text"
                 name="userId"
                 placeholder="enter your userId"
-                className="form-control m-2"
+                className="form-control mb-2"
               />
               <ErrorMessage name="userId" component="div" />
               <Field
                 type="password"
                 name="password"
                 placeholder="enter your password"
-                className="form-control m-2"
+                className="form-control mb-2"
               />
               <ErrorMessage name="password" component="div" />
               <button
                 type="submit"
-                className="form-control btn btn-danger m-2"
+                className="form-control btn btn-danger mb-2 fw-bolder"
                 disabled={isSubmitting}
               >
                 Log In

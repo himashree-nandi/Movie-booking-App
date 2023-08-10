@@ -8,3 +8,8 @@
     backdrop-filter: blur(20px);
 
 }
+.app{
+    font-size: 23px;
+    justify-content: center;
+    text-align: center;
+}
