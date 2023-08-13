@@ -16,8 +16,8 @@ function App() {
           <Route exact path="/login" element={<Auth />} />
           <Route exact path="/signup" element={<Auth />} />
           <Route exact path="/" element={<LandingPage />} />
-          <Route exact path="/admin" element={<Admin />} />
-          <Route exact path="/client" element={<Client/>}/>
+          <Route exact path="/admin" element={<AuthHOC><Admin/></AuthHOC>} />
+          <Route exact path="/client" element={<AuthHOC><Client/></AuthHOC>}/>
           <Route exact path="/movie/:movieId/details"element={<MovieDetails />}/>
           <Route exact path="/buyTickets/:movieId" element={<AuthHOC><TheatrePage/></AuthHOC>} />
           <Route exact path="/buyTickets/:movieId/:theatreId" element={<Bookings/>}/>

@@ -21,8 +21,8 @@ export default function Navbar2() {
 <>
 <Navbar expand="lg" className="bg-dark text-light sticky-top ">
         <Container fluid>
-          <Navbar.Brand href="/" className="lg">
-            <i className="text-danger">MBA</i>
+        <Navbar.Brand href="/" className="lg">
+           <img src="https://e7.pngegg.com/pngimages/919/445/png-clipart-bookmyshow-office-android-ticket-android-text-logo.png" width="80px"/>
           </Navbar.Brand>
             <Nav
               className="me-auto my-2 my-lg-0 "

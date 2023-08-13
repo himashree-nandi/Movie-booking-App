@@ -26,7 +26,7 @@ export const useAuth = () => {
     } else if (usertype === userTypes.ADMIN) {
       navigate("/admin");
     } else if (usertype === userTypes.CUSTOMER) {
-      navigate("/customer");
+      navigate("/");
     } else if (usertype === userTypes.CLIENT) {
       navigate("/client");
     }

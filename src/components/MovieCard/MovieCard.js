@@ -41,7 +41,7 @@ export default function MovieCard({ movie }) {
           <span className="font-weight-bold"> {casts.join(", ")} </span>
         </ListGroup.Item> */}
           </ListGroup>
-          <Card.Body
+          <Card.Footer
             className="bg-black text-white"
             style={{
               borderBottomRightRadius: "15px",
@@ -56,7 +56,7 @@ export default function MovieCard({ movie }) {
               <div>60k</div>
               See Trailer<i className="bi   bi-arrow-right-short"> </i>
             </div>
-          </Card.Body>
+          </Card.Footer>
         </Card>
       </Link>
     </>

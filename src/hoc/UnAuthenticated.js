@@ -7,7 +7,7 @@ export default function UnAuthenticated() {
     console.log(currentPath)
   return (
     <div className="bg-black text-danger vh-100 text-center d-flex flex-column align-items-center justify-content-center">
-      <h1>You need to be logged in to access this page</h1>
+      <h1>Opps ! You need to be logged in to access this page</h1>
       <br/>
       <Link to={`/login?redirectKey=${currentPath}`}>
         <Button size="lg" variant="danger" className="text-white">

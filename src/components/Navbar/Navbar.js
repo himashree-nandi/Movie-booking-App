@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./navbar.css";
-export default function Navigation({filterMovie}) {
+export default function Navigation({ filterMovie }) {
   const token = localStorage.getItem(TOKEN);
   const isLogin = isLoggedIn();
   const navigate = useNavigate();
@@ -18,15 +18,18 @@ export default function Navigation({filterMovie}) {
     }
     navigate("/login");
   };
-  const inputChange=(e)=>{
-    filterMovie(e.target.value)
-  }
+  const inputChange = (e) => {
+    filterMovie(e.target.value);
+  };
   return (
     <div className=" sticky-top bg-dark">
       <Navbar expand="lg" className="bg-dark text-light sticky-top ">
         <Container fluid>
           <Navbar.Brand href="/" className="lg">
-            <i className="text-danger">MBA</i>
+            <img
+              src="https://e7.pngegg.com/pngimages/919/445/png-clipart-bookmyshow-office-android-ticket-android-text-logo.png"
+              width="80px"
+            />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll" className="text-white">
@@ -44,7 +47,7 @@ export default function Navigation({filterMovie}) {
                 onChange={inputChange}
               />
               <Button
-              size="lg"
+                size="lg"
                 variant="outline-black"
                 className="btn btn-danger text-white"
                 onClick={onAuthButtonClick}
